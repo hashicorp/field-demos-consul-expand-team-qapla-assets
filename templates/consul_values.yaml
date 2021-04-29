@@ -1,0 +1,32 @@
+global:
+  enabled: true
+  datacenter: dcanadillas1
+  image: 'hashicorp/consul-enterprise:1.8.4-ent'
+server:
+  enabled: true
+  enterpriseLicense:
+    secretName: consul-ent-license
+    secretKey: key
+  replicas: 3
+  # affinity: {}
+ui:
+  enabled: true
+  service:
+    enabled: true
+    type: NodePort
+    # Let's fix the NodePort, so we can access from the UI tab in Instruqt
+    # additionalSpec: |
+    #   ports:
+    #   - name: http
+    #     port: 80
+    #     targetPort: 8500
+    #     nodePort: 30085
+
+connectInject:
+  enabled: true
+  # consulNamespaces:
+  #   mirroringK8S: true
+
+client:
+  enabled: true
+  grpc: true
