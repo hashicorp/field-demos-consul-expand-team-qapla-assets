@@ -1,0 +1,6 @@
+{
+  "frontend": "frontend.yaml",
+  "product-api" : "v1",
+  "public-api": "v1",
+  "postgres": "v1"
+}
