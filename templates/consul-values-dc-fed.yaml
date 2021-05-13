@@ -67,8 +67,8 @@ meshGateway:
 
 connectInject:
   enabled: true
-    transparentProxy:
-      defaultEnabled: true
+  transparentProxy:
+    defaultEnabled: true
 %{if enterprise ~}
   consulNamespaces:
     mirroringK8S: true
