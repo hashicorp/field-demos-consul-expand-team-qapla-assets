@@ -25,9 +25,7 @@ data "google_service_account" "owner_project" {
   account_id = var.service_account
 }
 module "gke" {
-  # source  = "app.terraform.io/hc-dcanadillas/gke/tf"
-  source  = "github.com/dcanadillas/dcanadillas-tf-gke"
-  # source  = "./modules/gke"
+  source  = "./modules/tf-gke"
 
   # version = "0.1.0"
   count = var.create_federation ? 2 : 1
@@ -46,7 +44,7 @@ module "gke" {
 
 module "k8s" {
   source = "./modules/kubernetes"
-  depends_on = [ 
+  depends_on = [
     module.gke,
     # data.google_container_cluster.primary_gke
   ]
@@ -80,7 +78,7 @@ module "k8s" {
 module "k8s-sec" {
   count = var.create_federation ? 1 : 0
   source = "./modules/kubernetes"
-  depends_on = [ 
+  depends_on = [
     # module.gke,
     module.k8s,
     # data.google_container_cluster.secondary_gke
