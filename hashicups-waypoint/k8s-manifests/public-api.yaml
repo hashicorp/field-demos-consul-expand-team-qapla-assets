@@ -43,7 +43,6 @@ spec:
         consul.hashicorp.com/connect-inject: "true"
         consul.hashicorp.com/connect-service-upstreams: "product-api:9090,payments:9091"
         consul.hashicorp.com/service-tags: "v1"
-        consul.hashicorp.com/connect-service-protocol: "http"
     spec:
       serviceAccountName: public-api
       containers:
