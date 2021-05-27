@@ -38,7 +38,6 @@ spec:
       annotations:
         consul.hashicorp.com/connect-inject: "true"
         consul.hashicorp.com/connect-service: payments
-        consul.hashicorp.com/connect-service-protocol: "http"
       creationTimestamp: null
       labels:
         service: payments
