@@ -65,7 +65,7 @@ spec:
             path: conf.json
       containers:
         - name: product-api
-          image: hashicorpdemoapp/product-api:v0.0.11
+          image: hashicorpdemoapp/product-api:v0.0.15
           ports:
             - containerPort: 9090
             - containerPort: 9103
