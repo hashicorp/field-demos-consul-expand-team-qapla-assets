@@ -41,6 +41,7 @@ app "public-api" {
         "consul.hashicorp.com/connect-service" = "public-api"
         # "consul.hashicorp.com/connect-service-upstreams" = "product-api:9090"
         "consul.hashicorp.com/connect-service-upstreams" = "product-api:9090,payments:9091"
+        consul.hashicorp.com/connect-service-protocol: "http"
       }
       service_port = "8080"
       service_account = "public-api"
@@ -120,6 +121,7 @@ app "payments" {
         "consul.hashicorp.com/connect-inject" = "true"
         "consul.hashicorp.com/connect-service" = "payments"
         # "consul.hashicorp.com/connect-service-port" = "9091"
+        consul.hashicorp.com/connect-service-protocol: "http"
       }
       service_port = "8080"
       service_account = "payments"
