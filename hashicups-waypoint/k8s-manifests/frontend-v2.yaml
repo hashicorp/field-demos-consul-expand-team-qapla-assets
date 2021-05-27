@@ -78,7 +78,6 @@ spec:
         consul.hashicorp.com/connect-inject: "true"
         consul.hashicorp.com/connect-service-upstreams: "public-api:8080"
         consul.hashicorp.com/service-tags: "v2"
-        consul.hashicorp.com/connect-service-protocol: "http"
     spec:
       serviceAccountName: frontend
       volumes:
