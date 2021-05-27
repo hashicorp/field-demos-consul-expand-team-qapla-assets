@@ -1,6 +1,4 @@
 ---
-# Service to expose web frontend
-
 apiVersion: v1
 kind: Service
 metadata:
