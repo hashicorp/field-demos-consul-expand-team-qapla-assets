@@ -67,7 +67,7 @@ app "product-api" {
   build {
     use "docker-pull" {
       image = "hashicorpdemoapp/product-api"
-      tag   = "v0.0.11"
+      tag   = "v0.0.15"
     }
   }
 
@@ -88,7 +88,7 @@ app "postgres" {
   build {
     use "docker-pull" {
       image = "hashicorpdemoapp/product-api-db"
-      tag   = "v0.0.11"
+      tag   = "v0.0.15"
     }
   }
 
@@ -110,7 +110,7 @@ app "payments" {
   build {
     use "docker-pull" {
       image = "hashicorpdemoapp/payments"
-      tag   = "v0.0.6"
+      tag   = "v0.0.11"
     }
   }
 

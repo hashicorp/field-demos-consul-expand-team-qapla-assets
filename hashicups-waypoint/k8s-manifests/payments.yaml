@@ -44,7 +44,7 @@ spec:
         app: payments
     spec:
       containers:
-      - image: hashicorpdemoapp/payments:v0.0.6
+      - image: hashicorpdemoapp/payments:v0.0.11
         imagePullPolicy: Always
         name: payments
         ports:
