@@ -1,0 +1,12 @@
+kind: IngressGateway
+metadata:
+  name: ingress-gateway
+  namespace: default
+spec:
+  listeners:
+    - port: 8080
+      protocol: http
+      services:
+        - name: frontend
+          namespace: apps
+          hosts: '*'

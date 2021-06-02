@@ -1,0 +1,16 @@
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceRouter
+metadata:
+  name: frontend
+  namespace: apps
+spec:
+  routes:
+    - match:
+        http:
+          queryParam:
+            - name: x-debug
+              present: true
+      destination:
+        service: frontend
+        serviceSubset: "v2"
+        namespace: apps

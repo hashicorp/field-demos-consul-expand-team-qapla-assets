@@ -1,0 +1,16 @@
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceResolver
+metadata:
+  name: frontend
+  namespace: apps
+spec:
+  defaultSubset: "v1"
+  subsets:
+    v1:
+      filter: "Service.Tags contains v1"
+    v2:
+      filter: "Service.Tags contains v2"
+  failover:
+    "*":
+      datacenters:
+        - dc2
