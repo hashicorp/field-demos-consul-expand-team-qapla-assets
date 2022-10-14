@@ -6,7 +6,7 @@ variable "gcp_project" {
 }
 variable "node_type" {
   description = "Machine type for nodes"
-  default = "n1-standard-2"
+  default = "n2-standard-2"
 }
 variable "gcp_zone" {
   description = "availability zones"

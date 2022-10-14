@@ -3,19 +3,23 @@ terraform {
   required_providers {
     google = {
       source = "hashicorp/google"
-      version = "3.64.0"
+      version = "4.40.0"
     }
     helm = {
       source = "hashicorp/helm"
-      version = "2.1.2"
+      version = "2.7.1"
     }
     kubernetes = {
       source = "hashicorp/kubernetes"
-      version = "2.1.0"
+      version = "2.14.0"
     }
   }
   # backend "remote" {
   # }
+}
+
+resource "random_id" "uid" {
+  byte_length = 2
 }
 
 # Collect client config for GCP
@@ -31,9 +35,10 @@ module "gke" {
   count = var.create_federation ? 2 : 1
   dns_zone = var.dns_zone
   gcp_project = var.gcp_project
+  node_type = var.node_type
   gcp_region = var.gcp_region[count.index]
   gcp_zone = var.gcp_zone[count.index]
-  gcs_bucket = var.gcs_bucket
+  gcs_bucket = data.google_service_account.owner_project
   gke_cluster = "${var.gke_cluster}${count.index + 1}"
   default_gke = var.default_gke
   default_network = var.default_network
@@ -62,7 +67,7 @@ module "k8s" {
   gcp_region = var.gcp_region[0]
   gcp_project = var.gcp_project
   cluster_name = var.gke_cluster
-  config_bucket = var.gcs_bucket
+  config_bucket = google_storage_bucket.helm_values.name
   nodes = var.consul_nodes
   gcp_service_account = data.google_service_account.owner_project
   dns_zone = var.dns_zone
@@ -97,7 +102,7 @@ module "k8s-sec" {
   gcp_region = var.gcp_region[1]
   gcp_project = var.gcp_project
   cluster_name = var.gke_cluster
-  config_bucket = var.gcs_bucket
+  config_bucket = google_storage_bucket.helm_values.name
   nodes = var.consul_nodes
   gcp_service_account = data.google_service_account.owner_project
   dns_zone = var.dns_zone
@@ -110,4 +115,11 @@ module "k8s-sec" {
   consul_version = var.consul_version
   # envoy_version = var.envoy_version
   chart_version = var.chart_version
+}
+
+resource "google_storage_bucket" "helm_values" {
+  # count = var.config_bucket != "" ? 1 : 0
+  name   = "${var.gcs_bucket}-${random_id.uid.dec}"
+  location = var.gcp_region[0]
+  uniform_bucket_level_access = true
 }

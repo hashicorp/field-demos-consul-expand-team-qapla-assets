@@ -37,7 +37,7 @@ spec:
     metadata:
       annotations:
         consul.hashicorp.com/connect-inject: "true"
-        consul.hashicorp.com/connect-service: payments
+        consul.hashicorp.com/connect-service: "payments"
       creationTimestamp: null
       labels:
         service: payments
@@ -49,3 +49,4 @@ spec:
         name: payments
         ports:
         - containerPort: 8080
+      serviceAccount: payments

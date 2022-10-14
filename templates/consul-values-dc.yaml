@@ -5,6 +5,13 @@ global:
   image: ${image}
   # image: 'hashicorp/consul-enterprise:$${version}-ent'
   # imageEnvoy: $${envoy}
+    # Create a K8s secret with:
+  # `kubectl create secret generic consul-ent-license --from-literal="key=$(cat <your_path>/consul.hclic)" -n consul-cluster`
+%{if enterprise && license != null ~}  
+  enterpriseLicense:
+    secretName: consul-ent-license
+    secretKey: key
+%{endif ~}
   federation:
     enabled: true
     createFederationSecret: true    
@@ -15,13 +22,6 @@ global:
 %{endif ~}
 server:
   enabled: true
-  # Create a K8s secret with:
-  # `kubectl create secret generic consul-ent-license --from-literal="key=$(cat <your_path>/consul.hclic)" -n consul-cluster`
-%{if enterprise && license != null ~}  
-  enterpriseLicense:
-    secretName: consul-ent-license
-    secretKey: key
-%{endif ~}
   replicas: ${nodes}
   bootstrapExpect: ${nodes}
   disruptionBudget:

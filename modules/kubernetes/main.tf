@@ -1,18 +1,18 @@
-terraform {
-  required_version = ">= 0.15" # 0.14 version has a problem when refreshing data sources on destroy
-  required_providers {
-    helm = {
-      source = "hashicorp/helm"
-      version = "2.1.2"
-    }
-    kubernetes = {
-      source = "hashicorp/kubernetes"
-      version = "2.1.0"
-    }
-  }
-  # backend "remote" {
-  # }
-}
+# terraform {
+#   required_version = ">= 0.15" # 0.14 version has a problem when refreshing data sources on destroy
+#   required_providers {
+#     helm = {
+#       source = "hashicorp/helm"
+#       version = "2.1.2"
+#     }
+#     kubernetes = {
+#       source = "hashicorp/kubernetes"
+#       version = "2.1.0"
+#     }
+#   }
+#   # backend "remote" {
+#   # }
+# }
 
 # The Helm provider creates the namespace, but if we want to create it manually would be with following lines
 resource "kubernetes_namespace" "consul" {
@@ -71,7 +71,7 @@ resource "google_storage_bucket_object" "consul-config" {
   name   = "${var.cluster_name}-${formatdate("YYMMDD_HHmm",timestamp())}.yml"
   content = templatefile("${path.root}/templates/${var.values_file}",{
             # version = "1.8.4",
-            image = var.enterprise ? "hashicorp/consul-enterprise:${var.consul_version}" : "consul:${var.consul_version}"
+            image = var.enterprise ? "hashicorp/consul-enterprise:${var.consul_version}-ent" : "consul:${var.consul_version}"
             # envoy = "envoyproxy/envoy-alpine:${var.envoy_version}"
             datacenter = var.consul_dc
             enterprise = var.enterprise
