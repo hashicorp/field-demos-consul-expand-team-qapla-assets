@@ -15,5 +15,5 @@ dns_zone = null
 consul_license = ""
 create_federation = true
 consul_enterprise = false
-consul_version = "1.8.5"
+consul_version = "1.13.2"
 chart_version = ""
