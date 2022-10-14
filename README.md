@@ -2,6 +2,13 @@
 
 > Note: This is not an official HashiCorp repositoiry and it is still a WIP...
 
+## Where used
+
+This is used to stand up the Instruqt track at
+https://play.instruqt.com/hashicorp/tracks/consul-zero-trust-networking-with-service-mesh
+linked from the Demo Catalog for "Consul Expand: Zero Trust Networking with Service Mesh" at 
+https://hashicorp.atlassian.net/wiki/spaces/IL/pages/2364833903/DEMO+CATALOG#Consul
+
 ## Consul Federation Context
 We can deploy application services in several Kubernetes clusters and use Consul Federation cluster capabilities and Service Mesh features to communicate registered services and work in a geo-failover scenario:
 
