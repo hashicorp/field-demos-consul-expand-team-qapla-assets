@@ -19,6 +19,9 @@ output "consul_values_dc1" {
 output "consul_values_dc2" {
   value = var.create_federation ? module.k8s-sec.0.consul_yaml : null
 }
+output "gs_bucket" {
+  value = google_storage_bucket.helm_values.name
+}
 # output "consul_ui" {
 #   value = [
 #     module.k8s.consul_ui,

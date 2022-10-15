@@ -14,6 +14,16 @@
 #   # }
 # }
 
+resource "time_static" "timestamp" {}
+resource "random_id" "id" {
+  byte_length = 1
+}
+
+locals {
+  unix_time = time_static.timestamp.unix
+  random_id = random_id.id.dec
+}
+
 # The Helm provider creates the namespace, but if we want to create it manually would be with following lines
 resource "kubernetes_namespace" "consul" {
   metadata {
@@ -68,7 +78,7 @@ resource "kubernetes_secret" "consul-federation" {
 
 # Because we are executing remotely using TFC/TFE we want to save our templates in a Cloud bucket
 resource "google_storage_bucket_object" "consul-config" {
-  name   = "${var.cluster_name}-${formatdate("YYMMDD_HHmm",timestamp())}.yml"
+  name   = "${var.cluster_name}-${local.random_id}-${local.unix_time}.yml"
   content = templatefile("${path.root}/templates/${var.values_file}",{
             # version = "1.8.4",
             image = var.enterprise ? "hashicorp/consul-enterprise:${var.consul_version}-ent" : "consul:${var.consul_version}"
