@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 # terraform {
 #   required_version = ">= 0.15" # 0.14 version has a problem when refreshing data sources on destroy
 #   required_providers {

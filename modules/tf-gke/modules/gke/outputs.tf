@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 data "google_container_cluster" "gke_cluster" {
   depends_on = [
     google_container_node_pool.primary_nodes,
