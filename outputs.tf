@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 # output "consul_config" {
 #   value = module.k8s.consul_yaml
 # }

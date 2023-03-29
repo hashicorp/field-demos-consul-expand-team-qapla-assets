@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 # Data resources to check GKE cluster endpoints and certs would be ideal, but there are some issues regarding
 # dependencies with Providers and data refresh for Kubernetes and Helm providers, so we will be using some outputs
 # from dependent modules

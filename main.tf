@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 terraform {
   required_version = ">= 0.15" # With 0.14 data sources are not refreshed on destroy and you need to do an apply before a destroy to auth to K8s and Helm
   required_providers {

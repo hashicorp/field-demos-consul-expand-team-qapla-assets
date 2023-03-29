@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 output "consul_yaml" {
   value = "https://storage.cloud.google.com/${google_storage_bucket_object.consul-config.bucket}/${google_storage_bucket_object.consul-config.output_name}"
 }

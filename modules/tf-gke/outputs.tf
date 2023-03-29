@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 
 output "gke_ca_certificate" {
   value = base64decode(module.gke.ca_certificate)
