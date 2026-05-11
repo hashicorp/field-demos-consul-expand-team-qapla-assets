@@ -1,4 +1,4 @@
-# Copyright IBM Corp. 2021, 2023
+# Copyright IBM Corp. 2021, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 # Data resources to check GKE cluster endpoints and certs would be ideal, but there are some issues regarding
